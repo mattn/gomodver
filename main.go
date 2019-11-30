@@ -17,5 +17,6 @@ func main() {
 		fmt.Fprintf(os.Stderr, "%s: %s\n", os.Args[0], err.Error())
 		os.Exit(1)
 	}
+	defer resp.Body.Close()
 	io.Copy(os.Stdout, resp.Body)
 }
