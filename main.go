@@ -13,6 +13,7 @@ func main() {
 		os.Exit(1)
 	}
 	resp, err := http.Get(fmt.Sprintf("https://proxy.golang.org/%s/@v/list", os.Args[1]))
+	defer resp.Body.Close()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "%s: %s\n", os.Args[0], err.Error())
 		os.Exit(1)
